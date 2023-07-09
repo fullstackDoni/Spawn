@@ -22,6 +22,12 @@ public class HomeController {
         return "index";
     }
 
+    @GetMapping(value = "/contact")
+    public String contact() {
+        return "contact";
+    }
+
+
     @GetMapping(value = "/sign-in-page")
     public String signInPage() {
         return "signin";
@@ -54,14 +60,35 @@ public class HomeController {
             user.setFullName(fullName);
             user.setPassword(password);
             User newUser = userService.addUser(user);
-            if(newUser!=null){
+            if (newUser != null) {
                 return "redirect:/sign-up-page?success";
-            }else {
+            } else {
                 return "redirect:/sign-up-page?emailerror?";
             }
-        }else{
+        } else {
             return "redirect:/sign-up-page?passworderror";
         }
     }
 
+    @GetMapping(value = "update-password-page")
+    public String updatepasswordPage() {
+        return "update-password";
+    }
+
+    @PostMapping(value = "/to-update-password")
+    public String toUpdatePassword(@RequestParam(name = "user_old_password") String oldPassword,
+                                   @RequestParam(name = "user_new_password") String newPassword,
+                                   @RequestParam(name = "user_confirm_new_password") String ConfirmNewPassword) {
+        if (newPassword.equals(ConfirmNewPassword)) {
+            User user = userService.updatePassword(newPassword, oldPassword);
+            if (user != null) {
+                return "redirect:/update-password-page?success";
+            } else {
+                return "redirect:/update-password-page?oldpassworderror";
+            }
+
+        } else {
+            return "redirect:/update-password-page?passworddismatch";
+        }
+    }
 }

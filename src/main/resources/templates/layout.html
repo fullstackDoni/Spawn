@@ -1,6 +1,6 @@
 <!doctype html>
 <html class="no-js" lang=""
-      xmlns:th:="http://www.thymeleaf.org"
+      xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
@@ -10,9 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="shortcut icon" type="image/x-icon" th:href="@{'/img/favicon.png'}">
-    <!-- Place favicon.ico in the root directory -->
 
-    <!-- CSS here -->
     <link rel="stylesheet" th:href="@{'/css/bootstrap.min.css'}">
     <link rel="stylesheet" th:href="@{'/css/animate.min.css'}">
     <link rel="stylesheet" th:href="@{'/css/magnific-popup.css'}">
@@ -29,7 +27,6 @@
 </head>
 <body>
 
-<!-- preloader -->
 <div id="preloader">
     <div id="loading-center">
         <div id="loading-center-absolute">
@@ -37,9 +34,7 @@
         </div>
     </div>
 </div>
-<!-- preloader-end -->
 
-<!-- header-area -->
 <header>
     <div class="header-top-area s-header-top-area d-none d-lg-block">
         <div class="container-fluid s-container-full-padding">
@@ -62,24 +57,27 @@
                             </div>
                             <div id="mobile-menu" class="navbar-wrap d-none d-lg-flex">
                                 <ul>
-                                    <li><a th:href="@{'/'}">Home</a>
+                                    <li><a th:href="@{'/'}">Главный</a>
                                     </li>
                                     <li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a th:href="@{'/adminpage'}">Admin</a>
                                         <ul class="submenu">
                                             <li><a th:href="@{'/add'}">Добавить</a></li>
                                         </ul>
                                     </li>
-                                    <li><a th:href="@{'/adminpage'}">Moderator</a>
+                                    <li sec:authorize="hasAnyRole('ROLE_MODERATOR')"><a th:href="@{'/adminpage'}">Moderator</a>
                                         <ul class="submenu">
                                             <li><a th:href="@{'/add'}">Добавить</a></li>
                                         </ul>
                                     </li>
+                                    <li sec:authorize="isAuthenticated()"><a th:href="@{'/update-password-page'}">Обновить
+                                        Пароль</a>
+                                    </li>
                                     <li sec:authorize="isAuthenticated()"><a th:href="@{'/sign-out'}">Выйти</a>
                                     </li>
-                                    <li><a href="#">contact</a></li>
-                                    <li sec:authorize="isAnonymous()"><a th:href="@{'/sign-in-page'}">Login</a>
+                                    <li><a th:href="@{'/contact'}">Контакт</a></li>
+                                    <li sec:authorize="isAnonymous()"><a th:href="@{'/sign-in-page'}">Логин</a>
                                     </li>
-                                    <li sec:authorize="isAnonymous()"><a th:href="@{'/sign-up-page'}">Register</a>
+                                    <li sec:authorize="isAnonymous()"><a th:href="@{'/sign-up-page'}">Регистрация</a>
                                     </li>
                                 </ul>
                             </div>
@@ -87,7 +85,6 @@
                     </div>
                     <div class="mobile-menu"></div>
                 </div>
-                <!-- Modal Search -->
                 <div class="modal fade" id="search-modal" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -102,12 +99,8 @@
         </div>
     </div>
 </header>
-<!-- header-area-end -->
-
-<!-- main-area -->
 <main>
 
-    <!-- breadcrumb-area -->
     <section class="breadcrumb-area breadcrumb-bg">
         <div class="container">
             <div class="row">
@@ -176,10 +169,9 @@
     <!-- shop-area-end -->
 
 </main>
+<br><br>
 <footer class="mt-3">
     <div class="footer-top footer-bg s-footer-bg">
-        <!-- newsletter-area -->
-        <!-- newsletter-area-end -->
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col-xl-3 col-lg-4 col-md-6">
@@ -203,15 +195,15 @@
                 <div class="col-xl-2 col-lg-3 col-sm-6">
                     <div class="footer-widget mb-50">
                         <div class="fw-title mb-35">
-                            <h5>Need Help?</h5>
+                            <h5>Көмек қажет?</h5>
                         </div>
                         <div class="fw-link">
                             <ul>
-                                <li><a href="#">Terms & Conditions</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="#">Refund Policy</a></li>
-                                <li><a href="#">Affiliate</a></li>
-                                <li><a href="#">FAQUse Cases</a></li>
+                                <li><a href="#">Шарттар мен талаптар</a></li>
+                                <li><a href="#">Құпиялылық саясаты</a></li>
+                                <li><a href="#">Қайтару саясаты</a></li>
+                                <li><a href="#">Серіктестік</a></li>
+                                <li><a href="#">FAQUse жағдайлары</a></li>
                             </ul>
                         </div>
                     </div>
@@ -219,14 +211,14 @@
                 <div class="col-xl-3 col-lg-4 col-md-6">
                     <div class="footer-widget mb-50">
                         <div class="fw-title mb-35">
-                            <h5>Follow us</h5>
+                            <h5>Тіркелініздер</h5>
                         </div>
                         <div class="footer-social">
                             <ul>
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-                                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                <li><a href="https://m.vk.com/f1zlk" target="_blank"><i class="fab fa-vk"></i></a></li>
+                                <li><a href="https://www.instagram.com/doskulov04/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                                <li><a href="https://github.com/fullstackDoni" target="_blank"><i class="fab fa-github"></i></a></li>
+                                <li><a href="https://www.linkedin.com/in/daniyar-doskulov-748031257/" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -253,10 +245,7 @@
         </div>
     </div>
 </footer>
-<!-- footer-area-end -->
 
-
-<!-- JS here -->
 <script th:src="@{'/js/vendor/jquery-3.4.1.min.js'}"></script>
 <script th:src="@{'/js/popper.min.js'}"></script>
 <script th:src="@{'/js/bootstrap.min.js'}"></script>
