@@ -17,8 +17,10 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableMethodSecurity
 public class SecurityConfig {
 
-    @Autowired
-    private UserService userService;
+    @Bean
+    public UserService userService(){
+        return new UserService();
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -27,6 +29,13 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
+
+        httpSecurity.exceptionHandling().accessDeniedPage("/403-page");
+
+
+        AuthenticationManagerBuilder builder = httpSecurity.getSharedObject(AuthenticationManagerBuilder.class);
+        builder.userDetailsService(userService()).passwordEncoder(passwordEncoder());
+
 
         httpSecurity.formLogin()
                 .loginPage("/sign-in-page")  // "/sign-in-page" Controller page

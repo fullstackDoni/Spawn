@@ -1,0 +1,280 @@
+<!doctype html>
+<html class="no-js" lang=""
+      xmlns:th:="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>SPAWN</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{'/img/favicon.png'}">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- CSS here -->
+    <link rel="stylesheet" th:href="@{'/css/bootstrap.min.css'}">
+    <link rel="stylesheet" th:href="@{'/css/animate.min.css'}">
+    <link rel="stylesheet" th:href="@{'/css/magnific-popup.css'}">
+    <link rel="stylesheet" th:href="@{'/css/fontawesome-all.min.css'}">
+    <link rel="stylesheet" th:href="@{'/css/odometer.css'}">
+    <link rel="stylesheet" th:href="@{'/css/aos.css'}">
+    <link rel="stylesheet" th:href="@{'/css/owl.carousel.min.css'}">
+    <link rel="stylesheet" th:href="@{'/css/meanmenu.css'}">
+    <link rel="stylesheet" th:href="@{'/css/slick.css'}">
+    <link rel="stylesheet" th:href="@{'/css/default.css'}">
+    <link rel="stylesheet" th:href="@{'/css/style.css'}">
+    <link rel="stylesheet" th:href="@{'/css/responsive.css'}">
+    <link rel="stylesheet" th:href="@{'/css/bootstrap.css'}">
+</head>
+<body>
+
+<!-- preloader -->
+<div id="preloader">
+    <div id="loading-center">
+        <div id="loading-center-absolute">
+            <img th:src="@{'/img/icon/preloader.svg'}" alt="">
+        </div>
+    </div>
+</div>
+<!-- preloader-end -->
+
+<!-- header-area -->
+<header>
+    <div class="header-top-area s-header-top-area d-none d-lg-block">
+        <div class="container-fluid s-container-full-padding">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="header-top-right">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="sticky-header" class="transparent-header">
+        <div class="container-fluid s-container-full-padding">
+            <div class="row">
+                <div class="col-12">
+                    <div class="main-menu menu-style-two">
+                        <nav>
+                            <div class="logo">
+                                <a th:href="@{'/'}"><img th:src="@{'/img/logo/logo.png'}" alt="Logo"></a>
+                            </div>
+                            <div id="mobile-menu" class="navbar-wrap d-none d-lg-flex">
+                                <ul>
+                                    <li><a th:href="@{'/'}">Home</a>
+                                    </li>
+                                    <li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a th:href="@{'/adminpage'}">Admin</a>
+                                        <ul class="submenu">
+                                            <li><a th:href="@{'/add'}">Добавить</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a th:href="@{'/adminpage'}">Moderator</a>
+                                        <ul class="submenu">
+                                            <li><a th:href="@{'/add'}">Добавить</a></li>
+                                        </ul>
+                                    </li>
+                                    <li sec:authorize="isAuthenticated()"><a th:href="@{'/sign-out'}">Выйти</a>
+                                    </li>
+                                    <li><a href="#">contact</a></li>
+                                    <li sec:authorize="isAnonymous()"><a th:href="@{'/sign-in-page'}">Login</a>
+                                    </li>
+                                    <li sec:authorize="isAnonymous()"><a th:href="@{'/sign-up-page'}">Register</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="mobile-menu"></div>
+                </div>
+                <!-- Modal Search -->
+                <div class="modal fade" id="search-modal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <form>
+                                <input type="text" placeholder="Search here...">
+                                <button><i class="fa fa-search"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- header-area-end -->
+
+<!-- main-area -->
+<main>
+
+    <!-- breadcrumb-area -->
+    <section class="breadcrumb-area breadcrumb-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb-content text-center">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12">
+                <div layout:fragment="content">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb-area-end -->
+
+    <!-- shop-area -->
+    <!--    <section class="shop-area pt-120 pb-90">-->
+    <!--        <div class="container">-->
+    <!--            <div class="row">-->
+    <!--                <div class="col-lg-4 col-sm-6">-->
+    <!--                    <div class="accessories-item text-center mb-80">-->
+    <!--                        <div class="accessories-thumb mb-30">-->
+    <!--                            <a href="#"><img th:src="@{'/img/product/re4.png'}" alt="" width="500" height="350"></a>-->
+    <!--                        </div>-->
+    <!--                        <div class="accessories-content">-->
+    <!--                            <h5><a href="#">Resident Evil 4 Remake</a></h5>-->
+    <!--                            <span>Price: $12.00</span>-->
+    <!--                            <a href="#" class="shop-add-action">Add to cart</a>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--                <div class="col-lg-4 col-sm-6">-->
+    <!--                    <div class="accessories-item text-center mb-80">-->
+    <!--                        <div class="accessories-thumb mb-30">-->
+    <!--                            <a href="#"><img th:src="@{'/img/product/stalker2.png'}" alt="" width="500" height="350"></a>-->
+    <!--                        </div>-->
+    <!--                        <div class="accessories-content">-->
+    <!--                            <h5><a href="#">S.T.A.L.K.E.R. 2</a></h5>-->
+    <!--                            <span>Price: $19.00</span>-->
+    <!--                            <a href="#" class="shop-add-action">Add to cart</a>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--                <div class="col-lg-4 col-sm-6">-->
+    <!--                    <div class="accessories-item text-center mb-80">-->
+    <!--                        <div class="accessories-thumb mb-30">-->
+    <!--                            <a href="#"><img th:src="@{'/img/product/cs2.jpeg'}" alt="" width="500" height="350"></a>-->
+    <!--                        </div>-->
+    <!--                        <div class="accessories-content">-->
+    <!--                            <h5><a href="#">Counter Strike 2</a></h5>-->
+    <!--                            <span>Price: $14.00</span>-->
+    <!--                            <a href="#" class="shop-add-action">Add to cart</a>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </section>-->
+    <!-- shop-area-end -->
+
+</main>
+<footer class="mt-3">
+    <div class="footer-top footer-bg s-footer-bg">
+        <!-- newsletter-area -->
+        <!-- newsletter-area-end -->
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-xl-3 col-lg-4 col-md-6">
+                    <div class="footer-widget mb-50">
+                        <div class="footer-logo mb-35">
+                            <a href="/"><img th:src="@{'/img/logo/logo.png'}" alt=""></a>
+                        </div>
+                        <div class="footer-text">
+                            <p>Spawn - бұл ойын қарауға арналған сайт</p>
+                            <div class="footer-contact">
+                                <ul>
+                                    <li><i class="fas fa-map-marker-alt"></i> <span>Address : </span>Alatau 2042</li>
+                                    <li><i class="fas fa-headphones"></i> <span>Phone : </span>+77471456536</li>
+                                    <li><i class="fas fa-envelope-open"></i><span>Email : </span>tkyskii2004@gmail.com
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-3 col-sm-6">
+                    <div class="footer-widget mb-50">
+                        <div class="fw-title mb-35">
+                            <h5>Need Help?</h5>
+                        </div>
+                        <div class="fw-link">
+                            <ul>
+                                <li><a href="#">Terms & Conditions</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Refund Policy</a></li>
+                                <li><a href="#">Affiliate</a></li>
+                                <li><a href="#">FAQUse Cases</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6">
+                    <div class="footer-widget mb-50">
+                        <div class="fw-title mb-35">
+                            <h5>Follow us</h5>
+                        </div>
+                        <div class="footer-social">
+                            <ul>
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-fire"><img th:src="@{'/img/images/footer_fire.png'}" alt=""></div>
+        <div class="footer-fire footer-fire-right"><img th:src="@{'/img/images/footer_fire.png'}" alt=""></div>
+    </div>
+    <div class="copyright-wrap s-copyright-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="copyright-text">
+                        <p>Copyright © 2023 <a href="#">Spawn</a> All Rights Reserved.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 d-none d-md-block">
+                    <div class="payment-method-img text-right">
+                        <img th:src="@{'/img/images/card_img.png'}" alt="img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- footer-area-end -->
+
+
+<!-- JS here -->
+<script th:src="@{'/js/vendor/jquery-3.4.1.min.js'}"></script>
+<script th:src="@{'/js/popper.min.js'}"></script>
+<script th:src="@{'/js/bootstrap.min.js'}"></script>
+<script th:src="@{'/js/isotope.pkgd.min.js'}"></script>
+<script th:src="@{'/js/slick.min.js'}"></script>
+<script th:src="@{'/js/jquery.meanmenu.min.js'}"></script>
+<script th:src="@{'/js/wow.min.js'}"></script>
+<script th:src="@{'/js/aos.js'}"></script>
+<script th:src="@{'/js/jquery.lettering.js'}"></script>
+<script th:src="@{'/js/jquery.textillate.js'}"></script>
+<script th:src="@{'/js/jquery.odometer.min.js'}"></script>
+<script th:src="@{'/js/jquery.appear.js'}"></script>
+<script th:src="@{'/js/owl.carousel.min.js'}"></script>
+<script th:src="@{'/js/jquery.countdown.min.js'}"></script>
+<script th:src="@{'/js/jquery.scrollUp.min.js'}"></script>
+<script th:src="@{'/js/imagesloaded.pkgd.min.js'}"></script>
+<script th:src="@{'/js/jquery.magnific-popup.min.js'}"></script>
+<script th:src="@{'/js/plugins.js'}"></script>
+<script th:src="@{'/js/main.js'}"></script>
+</body>
+</html>
