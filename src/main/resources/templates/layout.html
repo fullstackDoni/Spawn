@@ -59,22 +59,30 @@
                                 <ul>
                                     <li><a th:href="@{'/'}">Главный</a>
                                     </li>
-                                    <li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a th:href="@{'/adminpage'}">Admin</a>
+                                    <li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a th:href="@{'/admin-panel'}">Admin</a>
                                         <ul class="submenu">
-                                            <li><a th:href="@{'/add'}">Добавить</a></li>
+                                            <li><a th:href="@{'/add-game'}">Добавить Игру</a></li>
+                                            <li><a th:href="@{'/add-category'}">Добавить Категорий</a></li>
+                                            <li><a th:href="@{'/users'}">Пользователи</a></li>
                                         </ul>
                                     </li>
-                                    <li sec:authorize="hasAnyRole('ROLE_MODERATOR')"><a th:href="@{'/adminpage'}">Moderator</a>
-                                        <ul class="submenu">
-                                            <li><a th:href="@{'/add'}">Добавить</a></li>
-                                        </ul>
-                                    </li>
+<!--                                    <li sec:authorize="hasAnyRole('ROLE_MODERATOR')"><a th:href="@{'/adminpage'}">Moderator</a>-->
+<!--                                        <ul class="submenu">-->
+<!--                                            <li><a th:href="@{'/add'}">Добавить</a></li>-->
+<!--                                        </ul>-->
+<!--                                    </li>-->
                                     <li sec:authorize="isAuthenticated()"><a th:href="@{'/update-password-page'}">Обновить
                                         Пароль</a>
                                     </li>
-                                    <li sec:authorize="isAuthenticated()"><a th:href="@{'/sign-out'}">Выйти</a>
+                                    <li sec:authorize="isAuthenticated()"><a th:href="@{'/profile'}">Профиль</a>
                                     </li>
-                                    <li><a th:href="@{'/contact'}">Контакт</a></li>
+                                    <li sec:authorize="isAuthenticated()">
+                                        <form id="sign-out-form" th:action="@{/sign-out}" method="post">
+                                            <a href="#" onclick="document.getElementById('sign-out-form').submit(); return false;">Выйти</a>
+                                        </form>
+                                    </li>
+
+                                    <li><a th:href="@{'/contact'}">Біз жайлы</a></li>
                                     <li sec:authorize="isAnonymous()"><a th:href="@{'/sign-in-page'}">Логин</a>
                                     </li>
                                     <li sec:authorize="isAnonymous()"><a th:href="@{'/sign-up-page'}">Регистрация</a>
@@ -216,9 +224,12 @@
                         <div class="footer-social">
                             <ul>
                                 <li><a href="https://m.vk.com/f1zlk" target="_blank"><i class="fab fa-vk"></i></a></li>
-                                <li><a href="https://www.instagram.com/doskulov04/" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                                <li><a href="https://github.com/fullstackDoni" target="_blank"><i class="fab fa-github"></i></a></li>
-                                <li><a href="https://www.linkedin.com/in/daniyar-doskulov-748031257/" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                                <li><a href="https://www.instagram.com/doskulov04/" target="_blank"><i
+                                        class="fab fa-instagram"></i></a></li>
+                                <li><a href="https://github.com/fullstackDoni" target="_blank"><i
+                                        class="fab fa-github"></i></a></li>
+                                <li><a href="https://www.linkedin.com/in/daniyar-doskulov-748031257/" target="_blank"><i
+                                        class="fab fa-linkedin-in"></i></a></li>
                             </ul>
                         </div>
                     </div>

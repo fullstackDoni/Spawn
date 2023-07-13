@@ -1,14 +1,20 @@
 package kz.finalbitlab.spawn.controller;
 
-import groovy.transform.stc.POJO;
+import kz.finalbitlab.spawn.model.Category;
+import kz.finalbitlab.spawn.model.Game;
 import kz.finalbitlab.spawn.model.User;
+import kz.finalbitlab.spawn.repository.CategoryRepository;
+import kz.finalbitlab.spawn.repository.GameRepository;
 import kz.finalbitlab.spawn.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 public class HomeController {
@@ -16,15 +22,24 @@ public class HomeController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private GameRepository gameRepository;
+
+    @Autowired
+    private CategoryRepository categoryRepository;
+
 
     @GetMapping(value = "/")
-    public String index() {
+    public String index(Model model) {
+        List<Game> gameList = gameRepository.findAll();
+        List<Category> categoryList = categoryRepository.findAll();
+        model.addAttribute("games", gameList);
         return "index";
     }
 
     @GetMapping(value = "/contact")
     public String contact() {
-        return "contact";
+        return "aboutus";
     }
 
 
@@ -91,4 +106,5 @@ public class HomeController {
             return "redirect:/update-password-page?passworddismatch";
         }
     }
+
 }
