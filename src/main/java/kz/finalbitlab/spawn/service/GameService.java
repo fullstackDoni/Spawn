@@ -1,10 +1,13 @@
 package kz.finalbitlab.spawn.service;
 
+import kz.finalbitlab.spawn.dto.GameDTO;
+import kz.finalbitlab.spawn.mapper.GameMapper;
 import kz.finalbitlab.spawn.model.Game;
 import kz.finalbitlab.spawn.repository.GameRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -13,18 +16,19 @@ public class GameService {
 
     private final GameRepository gameRepository;
 
-    public List<Game> getGames(){
-        return gameRepository.findAll();
+    private final GameMapper gameMapper;
+    public List<GameDTO> getGames(){
+        return gameMapper.toDtoList(gameRepository.findAll());
     }
 
-    public Game addGame(Game game){
-        return gameRepository.save(game);
+    public GameDTO addGame(GameDTO game){
+        return gameMapper.toDto(gameRepository.save(gameMapper.toModel(game)));
     }
-    public Game getGame(Long id){
-        return gameRepository.findById(id).orElse(new Game());
+    public GameDTO getGame(Long id){
+        return gameMapper.toDto(gameRepository.findById(id).orElse(new Game()));
     }
-    public Game updateGame(Game game){
-        return gameRepository.save(game);
+    public GameDTO updateGame(GameDTO game){
+        return gameMapper.toDto(gameRepository.save(gameMapper.toModel(game)));
     }
     public void deleteGame(Long id){
         gameRepository.deleteById(id);

@@ -1,5 +1,6 @@
 package kz.finalbitlab.spawn.api;
 
+import kz.finalbitlab.spawn.dto.GameDTO;
 import kz.finalbitlab.spawn.model.Game;
 import kz.finalbitlab.spawn.service.GameService;
 import lombok.RequiredArgsConstructor;
@@ -16,22 +17,22 @@ public class GamesRestController {
 
 
     @GetMapping
-    public List<Game> gameList() {
+    public List<GameDTO> gameList() {
         return gameService.getGames();
     }
 
     @GetMapping(value = "{id}")
-    public Game getGame(@PathVariable(name = "id") Long id) {
+    public GameDTO getGame(@PathVariable(name = "id") Long id) {
         return gameService.getGame(id);
     }
 
     @PostMapping()
-    public Game addGame(@RequestBody Game game) {
+    public GameDTO addGame(@RequestBody GameDTO game) {
         return gameService.addGame(game);
     }
 
     @PutMapping
-    public Game updateGame(@RequestBody Game game) {
+    public GameDTO updateGame(@RequestBody GameDTO game) {
         return gameService.updateGame(game);
     }
     @DeleteMapping(value = "{id}")
