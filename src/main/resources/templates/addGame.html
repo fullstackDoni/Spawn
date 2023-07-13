@@ -13,7 +13,7 @@
                 </div>
                 <div class="row mt-2">
                     <div class="col-12">
-                        <input type="text" class="form-control" name="game_name">
+                        <input type="text" class="form-control" name="name">
                     </div>
                 </div>
                 <div class="row mt-2">
@@ -54,7 +54,7 @@
                 <div class="row mt-3">
                     <div class="col-12">
                         <select class="form-select" name="category.id">
-                            <option th:each="cat :${cat}" th:text="${cat.name}">
+                            <option th:each="cat :${category}" th:text="${cat.name}">
 
                             </option>
                         </select>

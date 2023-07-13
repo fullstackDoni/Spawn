@@ -8,15 +8,7 @@ import lombok.Setter;
 @Table(name = "t_categories")
 @Getter
 @Setter
-public class Category {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
-
-    @Column(name = "name")
-    private String name;
+public class Category extends BaseModel{
 
 
 }

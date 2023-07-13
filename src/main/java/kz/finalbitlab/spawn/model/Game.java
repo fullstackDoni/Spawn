@@ -8,14 +8,7 @@ import lombok.Setter;
 @Table(name = "t_games")
 @Getter
 @Setter
-public class Game {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
-
-    @Column(name = "game_name")
-    private String name;
+public class Game extends BaseModel{
 
     @Column(name = "year")
     private int years;
@@ -23,7 +16,7 @@ public class Game {
     @Column(name = "image")
     private String image;
 
-    @Column(name = "description")
+    @Column(name = "description",columnDefinition = "TEXT")
     private String description;
 
     @ManyToOne

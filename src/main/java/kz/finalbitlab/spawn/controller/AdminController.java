@@ -44,7 +44,7 @@ public class AdminController {
     @GetMapping(value = "/add-game")
     public String addGame(Model model) {
         List<Category> categoryList = categoryRepository.findAll();
-        model.addAttribute("cat", categoryList);
+        model.addAttribute("category", categoryList);
         return "addGame";
     }
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")

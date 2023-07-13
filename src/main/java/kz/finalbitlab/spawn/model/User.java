@@ -13,12 +13,10 @@ import java.util.List;
 @Table(name = "t_users")
 @Getter
 @Setter
-public class User implements UserDetails{
+public class User extends BaseModel implements UserDetails{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+
+
     @Column(name = "email")
     private String email;
 

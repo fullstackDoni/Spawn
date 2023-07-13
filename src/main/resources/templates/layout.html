@@ -59,18 +59,19 @@
                                 <ul>
                                     <li><a th:href="@{'/'}">Главный</a>
                                     </li>
-                                    <li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a th:href="@{'/admin-panel'}">Admin</a>
+                                    <li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a
+                                            th:href="@{'/admin-panel'}">Admin</a>
                                         <ul class="submenu">
                                             <li><a th:href="@{'/add-game'}">Добавить Игру</a></li>
                                             <li><a th:href="@{'/add-category'}">Добавить Категорий</a></li>
                                             <li><a th:href="@{'/users'}">Пользователи</a></li>
                                         </ul>
                                     </li>
-<!--                                    <li sec:authorize="hasAnyRole('ROLE_MODERATOR')"><a th:href="@{'/adminpage'}">Moderator</a>-->
-<!--                                        <ul class="submenu">-->
-<!--                                            <li><a th:href="@{'/add'}">Добавить</a></li>-->
-<!--                                        </ul>-->
-<!--                                    </li>-->
+                                    <li sec:authorize="hasAnyRole('ROLE_MODERATOR')"><a th:href="@{'/adminpage'}">Moderator</a>
+                                        <ul class="submenu">
+                                            <li><a th:href="@{'/add'}">Добавить</a></li>
+                                        </ul>
+                                    </li>
                                     <li sec:authorize="isAuthenticated()"><a th:href="@{'/update-password-page'}">Обновить
                                         Пароль</a>
                                     </li>
@@ -78,7 +79,8 @@
                                     </li>
                                     <li sec:authorize="isAuthenticated()">
                                         <form id="sign-out-form" th:action="@{/sign-out}" method="post">
-                                            <a href="#" onclick="document.getElementById('sign-out-form').submit(); return false;">Выйти</a>
+                                            <a href="#"
+                                               onclick="document.getElementById('sign-out-form').submit(); return false;">Выйти</a>
                                         </form>
                                     </li>
 
@@ -129,52 +131,6 @@
             </div>
         </div>
     </div>
-    <!-- breadcrumb-area-end -->
-
-    <!-- shop-area -->
-    <!--    <section class="shop-area pt-120 pb-90">-->
-    <!--        <div class="container">-->
-    <!--            <div class="row">-->
-    <!--                <div class="col-lg-4 col-sm-6">-->
-    <!--                    <div class="accessories-item text-center mb-80">-->
-    <!--                        <div class="accessories-thumb mb-30">-->
-    <!--                            <a href="#"><img th:src="@{'/img/product/re4.png'}" alt="" width="500" height="350"></a>-->
-    <!--                        </div>-->
-    <!--                        <div class="accessories-content">-->
-    <!--                            <h5><a href="#">Resident Evil 4 Remake</a></h5>-->
-    <!--                            <span>Price: $12.00</span>-->
-    <!--                            <a href="#" class="shop-add-action">Add to cart</a>-->
-    <!--                        </div>-->
-    <!--                    </div>-->
-    <!--                </div>-->
-    <!--                <div class="col-lg-4 col-sm-6">-->
-    <!--                    <div class="accessories-item text-center mb-80">-->
-    <!--                        <div class="accessories-thumb mb-30">-->
-    <!--                            <a href="#"><img th:src="@{'/img/product/stalker2.png'}" alt="" width="500" height="350"></a>-->
-    <!--                        </div>-->
-    <!--                        <div class="accessories-content">-->
-    <!--                            <h5><a href="#">S.T.A.L.K.E.R. 2</a></h5>-->
-    <!--                            <span>Price: $19.00</span>-->
-    <!--                            <a href="#" class="shop-add-action">Add to cart</a>-->
-    <!--                        </div>-->
-    <!--                    </div>-->
-    <!--                </div>-->
-    <!--                <div class="col-lg-4 col-sm-6">-->
-    <!--                    <div class="accessories-item text-center mb-80">-->
-    <!--                        <div class="accessories-thumb mb-30">-->
-    <!--                            <a href="#"><img th:src="@{'/img/product/cs2.jpeg'}" alt="" width="500" height="350"></a>-->
-    <!--                        </div>-->
-    <!--                        <div class="accessories-content">-->
-    <!--                            <h5><a href="#">Counter Strike 2</a></h5>-->
-    <!--                            <span>Price: $14.00</span>-->
-    <!--                            <a href="#" class="shop-add-action">Add to cart</a>-->
-    <!--                        </div>-->
-    <!--                    </div>-->
-    <!--                </div>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    </section>-->
-    <!-- shop-area-end -->
 
 </main>
 <br><br>
