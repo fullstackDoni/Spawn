@@ -33,7 +33,7 @@ public class GamesRestController {
 
     @PutMapping
     public GameDTO updateGame(@RequestBody GameDTO game) {
-        return gameService.updateGame(game);
+            return gameService.updateGame(game);
     }
     @DeleteMapping(value = "{id}")
     public void deleteGame(@PathVariable(name = "id") Long id){
