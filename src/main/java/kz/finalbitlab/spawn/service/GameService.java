@@ -20,4 +20,13 @@ public class GameService {
     public Game addGame(Game game){
         return gameRepository.save(game);
     }
+    public Game getGame(Long id){
+        return gameRepository.findById(id).orElse(new Game());
+    }
+    public Game updateGame(Game game){
+        return gameRepository.save(game);
+    }
+    public void deleteGame(Long id){
+        gameRepository.deleteById(id);
+    }
 }
