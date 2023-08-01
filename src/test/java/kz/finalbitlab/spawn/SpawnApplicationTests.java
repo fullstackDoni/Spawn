@@ -42,5 +42,6 @@ class SpawnApplicationTests {
 		Assertions.assertEquals(game.getDescription(),newGame.getDescription());
 		gameService.deleteGame(game.getId());
 
+
 	}
 }

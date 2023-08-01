@@ -27,194 +27,199 @@
 </head>
 <body>
 
-<div class="container">
-    <div id="preloader">
-        <div id="loading-center">
-            <div id="loading-center-absolute">
-                <img th:src="@{'/img/icon/preloader.svg'}" alt="">
+<div id="preloader">
+    <div id="loading-center">
+        <div id="loading-center-absolute">
+            <img th:src="@{'/img/icon/preloader.svg'}" alt="">
+        </div>
+    </div>
+</div>
+
+<header>
+    <div class="header-top-area s-header-top-area d-none d-lg-block">
+        <div class="container-fluid s-container-full-padding">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="header-top-right">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="sticky-header" class="transparent-header">
+        <div class="container-fluid s-container-full-padding">
+            <div class="row">
+                <div class="col-12">
+                    <div class="main-menu menu-style-two">
+                        <nav>
+                            <div class="logo">
+                                <a th:href="@{'/'}">
+                                    <img th:src="@{'/img/logo/logo.png'}" alt="Logo">
+                                </a>
+                            </div>
+                            <div id="mobile-menu" class="navbar-wrap d-none d-lg-flex">
+                                <ul>
+                                    <li>
+                                        <a th:href="@{'/'}">Басты бет</a>
+                                    </li>
+                                    <li sec:authorize="hasAnyRole('ROLE_ADMIN')">
+                                        <a th:href="@{'/admin-panel'}">Админ</a>
+                                        <ul class="submenu">
+                                            <li><a th:href="@{'/add-game'}">Ойын Қосу</a></li>
+                                            <li><a th:href="@{'/add-category'}">Категория Қосу</a></li>
+                                            <li><a th:href="@{'/users'}">Пайдаланушылар</a></li>
+                                        </ul>
+                                    </li>
+                                    <li sec:authorize="hasAnyRole('ROLE_MODERATOR')">
+                                        <a href="#">Модератор</a>
+                                        <ul class="submenu">
+                                            <li><a th:href="@{'/games'}">Ойындар Өзгерту / Өшіру</a></li>
+                                        </ul>
+                                    </li>
+                                    <li sec:authorize="isAuthenticated()">
+                                        <a th:href="@{'/update-password-page'}">Құпиясөзді өзгерту</a>
+                                    </li>
+                                    <li sec:authorize="isAuthenticated()">
+                                        <a th:href="@{'/profile'}">Жеке Парақшам</a>
+                                    </li>
+                                    <li sec:authorize="isAuthenticated()">
+                                        <form id="sign-out-form" th:action="@{/sign-out}" method="post">
+                                            <a href="#"
+                                               onclick="document.getElementById('sign-out-form')
+                                               .submit(); return false;">Шығу</a>
+                                        </form>
+                                    </li>
+
+                                    <li><a th:href="@{'/contact'}">Біз жайлы</a></li>
+                                    <li sec:authorize="isAnonymous()">
+                                        <a th:href="@{'/sign-in-page'}">Логин</a>
+                                    </li>
+                                    <li sec:authorize="isAnonymous()">
+                                        <a th:href="@{'/sign-up-page'}">Регистрация</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="mobile-menu"></div>
+                </div>
+                <div class="modal fade" id="search-modal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <form>
+                                <input type="text" placeholder="Search here...">
+                                <button><i class="fa fa-search"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<main>
+
+    <section class="breadcrumb-area breadcrumb-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb-content text-center">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12">
+                <div layout:fragment="content">
+
+                </div>
             </div>
         </div>
     </div>
 
-    <header>
-        <div class="header-top-area s-header-top-area d-none d-lg-block">
-            <div class="container-fluid s-container-full-padding">
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <div class="header-top-right">
+</main>
+<br><br>
+<footer class="mt-3">
+    <div class="footer-top footer-bg s-footer-bg">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-xl-3 col-lg-4 col-md-6">
+                    <div class="footer-widget mb-50">
+                        <div class="footer-logo mb-35">
+                            <a href="/"><img th:src="@{'/img/logo/logo.png'}" alt=""></a>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="sticky-header" class="transparent-header">
-            <div class="container-fluid s-container-full-padding">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="main-menu menu-style-two">
-                            <nav>
-                                <div class="logo">
-                                    <a th:href="@{'/'}"><img th:src="@{'/img/logo/logo.png'}" alt="Logo"></a>
-                                </div>
-                                <div id="mobile-menu" class="navbar-wrap d-none d-lg-flex">
-                                    <ul>
-                                        <li><a th:href="@{'/'}">Главный</a>
-                                        </li>
-                                        <li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a
-                                                th:href="@{'/admin-panel'}">Admin</a>
-                                            <ul class="submenu">
-                                                <li><a th:href="@{'/add-game'}">Добавить Игру</a></li>
-                                                <li><a th:href="@{'/add-category'}">Добавить Категорий</a></li>
-                                                <li><a th:href="@{'/users'}">Пользователи</a></li>
-                                            </ul>
-                                        </li>
-                                        <li sec:authorize="hasAnyRole('ROLE_MODERATOR')"><a th:href="@{'/adminpage'}">Moderator</a>
-                                            <ul class="submenu">
-                                                <li><a th:href="@{'/add'}">Добавить</a></li>
-                                            </ul>
-                                        </li>
-                                        <li sec:authorize="isAuthenticated()"><a th:href="@{'/update-password-page'}">Обновить
-                                            Пароль</a>
-                                        </li>
-                                        <li sec:authorize="isAuthenticated()"><a th:href="@{'/profile'}">Профиль</a>
-                                        </li>
-                                        <li sec:authorize="isAuthenticated()">
-                                            <form id="sign-out-form" th:action="@{/sign-out}" method="post">
-                                                <a href="#"
-                                                   onclick="document.getElementById('sign-out-form').submit(); return false;">Выйти</a>
-                                            </form>
-                                        </li>
-
-                                        <li><a th:href="@{'/contact'}">Біз жайлы</a></li>
-                                        <li sec:authorize="isAnonymous()"><a th:href="@{'/sign-in-page'}">Логин</a>
-                                        </li>
-                                        <li sec:authorize="isAnonymous()"><a th:href="@{'/sign-up-page'}">Регистрация</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </nav>
-                        </div>
-                        <div class="mobile-menu"></div>
-                    </div>
-                    <div class="modal fade" id="search-modal" tabindex="-1" role="dialog" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <form>
-                                    <input type="text" placeholder="Search here...">
-                                    <button><i class="fa fa-search"></i></button>
-                                </form>
+                        <div class="footer-text">
+                            <p>Spawn - бұл ойын қарауға арналған сайт</p>
+                            <div class="footer-contact">
+                                <ul>
+                                    <li><i class="fas fa-map-marker-alt"></i> <span>Address : </span>Alatau 2042</li>
+                                    <li><i class="fas fa-headphones"></i> <span>Phone : </span>+77471456536</li>
+                                    <li><i class="fas fa-envelope-open"></i><span>Email : </span>tkyskii2004@gmail.com
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </header>
-    <main>
-
-        <section class="breadcrumb-area breadcrumb-bg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="breadcrumb-content text-center">
+                <div class="col-xl-2 col-lg-3 col-sm-6">
+                    <div class="footer-widget mb-50">
+                        <div class="fw-title mb-35">
+                            <h5>Көмек қажет?</h5>
+                        </div>
+                        <div class="fw-link">
+                            <ul>
+                                <li><a href="#">Шарттар мен талаптар</a></li>
+                                <li><a href="#">Құпиялылық саясаты</a></li>
+                                <li><a href="#">Қайтару саясаты</a></li>
+                                <li><a href="#">Серіктестік</a></li>
+                                <li><a href="#">FAQUse жағдайлары</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6">
+                    <div class="footer-widget mb-50">
+                        <div class="fw-title mb-35">
+                            <h5>Тіркелініздер</h5>
+                        </div>
+                        <div class="footer-social">
+                            <ul>
+                                <li><a href="https://m.vk.com/f1zlk" target="_blank"><i class="fab fa-vk"></i></a></li>
+                                <li><a href="https://www.instagram.com/doskulov04/" target="_blank"><i
+                                        class="fab fa-instagram"></i></a></li>
+                                <li><a href="https://github.com/fullstackDoni" target="_blank"><i
+                                        class="fab fa-github"></i></a></li>
+                                <li><a href="https://www.linkedin.com/in/daniyar-doskulov-748031257/" target="_blank"><i
+                                        class="fab fa-linkedin-in"></i></a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <div class="container mt-5">
+        </div>
+        <div class="footer-fire"><img th:src="@{'/img/images/footer_fire.png'}" alt=""></div>
+        <div class="footer-fire footer-fire-right"><img th:src="@{'/img/images/footer_fire.png'}" alt=""></div>
+    </div>
+    <div class="copyright-wrap s-copyright-wrap">
+        <div class="container">
             <div class="row">
-                <div class="col-12">
-                    <div layout:fragment="content">
-
+                <div class="col-lg-6 col-md-6">
+                    <div class="copyright-text">
+                        <p>Copyright © 2023 <a href="#">Spawn</a> All Rights Reserved.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 d-none d-md-block">
+                    <div class="payment-method-img text-right">
+                        <img th:src="@{'/img/images/card_img.png'}" alt="img">
                     </div>
                 </div>
             </div>
         </div>
-
-    </main>
-    <br><br>
-    <footer class="mt-3">
-        <div class="footer-top footer-bg s-footer-bg">
-            <div class="container">
-                <div class="row justify-content-between">
-                    <div class="col-xl-3 col-lg-4 col-md-6">
-                        <div class="footer-widget mb-50">
-                            <div class="footer-logo mb-35">
-                                <a href="/"><img th:src="@{'/img/logo/logo.png'}" alt=""></a>
-                            </div>
-                            <div class="footer-text">
-                                <p>Spawn - бұл ойын қарауға арналған сайт</p>
-                                <div class="footer-contact">
-                                    <ul>
-                                        <li><i class="fas fa-map-marker-alt"></i> <span>Address : </span>Alatau 2042</li>
-                                        <li><i class="fas fa-headphones"></i> <span>Phone : </span>+77471456536</li>
-                                        <li><i class="fas fa-envelope-open"></i><span>Email : </span>tkyskii2004@gmail.com
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-2 col-lg-3 col-sm-6">
-                        <div class="footer-widget mb-50">
-                            <div class="fw-title mb-35">
-                                <h5>Көмек қажет?</h5>
-                            </div>
-                            <div class="fw-link">
-                                <ul>
-                                    <li><a href="#">Шарттар мен талаптар</a></li>
-                                    <li><a href="#">Құпиялылық саясаты</a></li>
-                                    <li><a href="#">Қайтару саясаты</a></li>
-                                    <li><a href="#">Серіктестік</a></li>
-                                    <li><a href="#">FAQUse жағдайлары</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6">
-                        <div class="footer-widget mb-50">
-                            <div class="fw-title mb-35">
-                                <h5>Тіркелініздер</h5>
-                            </div>
-                            <div class="footer-social">
-                                <ul>
-                                    <li><a href="https://m.vk.com/f1zlk" target="_blank"><i class="fab fa-vk"></i></a></li>
-                                    <li><a href="https://www.instagram.com/doskulov04/" target="_blank"><i
-                                            class="fab fa-instagram"></i></a></li>
-                                    <li><a href="https://github.com/fullstackDoni" target="_blank"><i
-                                            class="fab fa-github"></i></a></li>
-                                    <li><a href="https://www.linkedin.com/in/daniyar-doskulov-748031257/" target="_blank"><i
-                                            class="fab fa-linkedin-in"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-fire"><img th:src="@{'/img/images/footer_fire.png'}" alt=""></div>
-            <div class="footer-fire footer-fire-right"><img th:src="@{'/img/images/footer_fire.png'}" alt=""></div>
-        </div>
-        <div class="copyright-wrap s-copyright-wrap">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6">
-                        <div class="copyright-text">
-                            <p>Copyright © 2023 <a href="#">Spawn</a> All Rights Reserved.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 d-none d-md-block">
-                        <div class="payment-method-img text-right">
-                            <img th:src="@{'/img/images/card_img.png'}" alt="img">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-</div>
-
+    </div>
+</footer>
 <script th:src="@{'/js/vendor/jquery-3.4.1.min.js'}"></script>
 <script th:src="@{'/js/popper.min.js'}"></script>
 <script th:src="@{'/js/bootstrap.min.js'}"></script>

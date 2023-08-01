@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout.html">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout.html"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
 <div layout:fragment="content">
     <div th:if="${game!=null}">
-        <div style="width: 13rem;display: flex;padding: 20px;">
-            <input type="hidden" name="id" th:value="${game.id}">
-            <img th:src="${game.image}" width="350" height="400">
-            <div style="margin-left: 100px;">
-                Аты: <h5 style="width: 400px;" th:text="${game.name}"></h5>
-                Жылы: <h5 style="width: 400px;" th:text="${game.years}"></h5>
-                Жанры: <p style="width: 400px;" th:text="${game.category.name}"></p>
-                Сипаттамасы: <p style="width: 400px;" th:text="${game.description}"></p>
+
+            <div style="width: 13rem;display: flex;padding: 20px;">
+                <img th:src="${game.image}" width="350" height="400">
+                <div style="margin-left: 100px;">
+                    Аты: <h5 style="width: 400px;" th:text="${game.name}"></h5>
+                    Жылы: <h5 style="width: 400px;" th:text="${game.years}"></h5>
+                    Жанр: <p style="width: 400px;" th:text="${game.category.name}"></p>
+                    Сипаттамасы: <p style="width: 400px;" th:text="${game.description}"></p>
+                </div>
             </div>
-        </div>
     </div>
 </div>
 </html>
-<!--text-align: center-->

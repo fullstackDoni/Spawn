@@ -1,5 +1,6 @@
 package kz.finalbitlab.spawn.service;
 
+import kz.finalbitlab.spawn.dto.GameDTO;
 import kz.finalbitlab.spawn.model.User;
 import kz.finalbitlab.spawn.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 public class UserService implements UserDetailsService {
@@ -60,5 +63,8 @@ public class UserService implements UserDetailsService {
             }
         }
         return null;
+    }
+    public List<User> getUser(){
+        return userRepository.findAll();
     }
 }

@@ -16,59 +16,6 @@ $(window).on('load', function () {
 	wowAnimation();
 });
 
-
-/*=============================================
-    =          Menu Bottom Line			      =
-=============================================*/
-function menu_bottom_line_active() {
-	var off = $('#mobile-menu > ul > li.show').offset(),
-		left = off.left,
-		right = $(window).width() - left - $('#mobile-menu > ul > li.show').width() + $('#mobile-menu > ul > li.show').width();
-
-	$('<style>.navbar-wrap > ul > li.show > a::after{width:' + right + 'px;}</style>').appendTo("head");
-}
-
-menu_bottom_line_active();
-
-// Menu bottom line
-function menu_bottom_line() {
-
-	$("#mobile-menu > ul > li").mouseover(function () {
-
-		if ($("#mobile-menu > ul > li").hasClass("active")) {
-			$(this).removeClass('active');
-		}
-
-		$(this).addClass('active');
-
-		var off = $('#mobile-menu > ul > li.active').offset(),
-			left = off.left,
-			right = $(window).width() - left - $('#mobile-menu > ul > li.active').width() + $('#mobile-menu > ul > li.active').width();
-
-		$('<style>.navbar-wrap > ul > li.active > a::after,.navbar-wrap > ul > li:hover > a::after{width:' + right + 'px;}</style>').appendTo("head");
-	});
-
-	$("#mobile-menu > ul > li").mouseleave(function () {
-		$(this).removeClass('active');
-	});
-
-}
-
-menu_bottom_line();
-
-
-/*=============================================
-    =    		Mobile Menu			      =
-=============================================*/
-$('#mobile-menu').meanmenu({
-	meanMenuContainer: '.mobile-menu',
-	meanScreenWidth: "992"
-});
-
-
-/*=============================================
-    =     Menu sticky & Scroll to top      =
-=============================================*/
 $(window).on('scroll', function () {
 	var scroll = $(window).scrollTop();
 	if (scroll < 245) {
@@ -78,11 +25,6 @@ $(window).on('scroll', function () {
 	}
 });
 
-
-
-/*=============================================
-    =    		 Main Slider		      =
-=============================================*/
 function mainSlider() {
 	var BasicSlider = $('.slider-active');
 	BasicSlider.on('init', function (e, slick) {
@@ -123,11 +65,6 @@ function mainSlider() {
 	}
 }
 
-
-
-/*=============================================
-    =    		Brand Active		      =
-=============================================*/
 $('.brand-active').slick({
   dots: false,
   infinite: true,
@@ -171,11 +108,6 @@ $('.brand-active').slick({
   ]
 });
 
-
-
-/*=============================================
-    =    		Brand Active		      =
-=============================================*/
 $('.s-brand-active').slick({
   dots: false,
   infinite: true,
@@ -219,10 +151,6 @@ $('.s-brand-active').slick({
   ]
 });
 
-
-/*=============================================
-    =    		Released Game Active		      =
-=============================================*/
 $('.new-released-game-active').slick({
   dots: false,
   infinite: true,
@@ -266,9 +194,7 @@ $('.new-released-game-active').slick({
   ]
 });
 
-/*=============================================
-	=         Game-gallery-active           =
-=============================================*/
+
 $('.game-gallery-active').slick({
 	centerMode: true,
 	centerPadding: '350px',
@@ -335,9 +261,7 @@ $('.game-gallery-active').slick({
 	]
 });
 
-/*=============================================
-    =    		Product Active		      =
-=============================================*/
+
 $('.product-active').slick({
   dots: false,
   infinite: true,
@@ -384,10 +308,6 @@ $('.product-active').slick({
 });
 
 
-
-/*=============================================
-    =    		Testimonial Active		     =
-=============================================*/
 $('.testimonial-active').owlCarousel({
 	loop: true,
 	margin: 0,
@@ -422,9 +342,6 @@ $('.testimonial-active').owlCarousel({
 })
 
 
-/*=============================================
-    =    		Latest Games		      =
-=============================================*/
 $('.latest-games-active').owlCarousel({
 	loop: true,
 	margin: 30,
@@ -459,10 +376,6 @@ $('.latest-games-active').owlCarousel({
 	}
 })
 
-
-/*=============================================
-    =    		Text Animation		      =
-=============================================*/
 function textAnimation() {
 	$('.tlt').textillate({
 		in: {
@@ -473,10 +386,6 @@ function textAnimation() {
 	});
 }
 
-
-/*=============================================
-    =      Released Game Active 	      =
-=============================================*/
 $('.released-game-active').slick({
 	slidesToShow: 1,
 	slidesToScroll: 1,
@@ -494,6 +403,7 @@ $('.released-game-active').slick({
 		},
 	]
 });
+
 $('.released-game-nav').slick({
 	slidesToShow: 3,
 	slidesToScroll: 1,
@@ -543,10 +453,6 @@ $('.released-game-nav').slick({
 	]
 });
 
-
-/*=============================================
-    =    		Magnific Popup		      =
-=============================================*/
 $('.popup-image').magnificPopup({
 	type: 'image',
 	gallery: {
@@ -557,10 +463,6 @@ $('.popup-video').magnificPopup({
 	type: 'iframe'
 });
 
-
-/*=============================================
-    =    		Isotope	Active  	      =
-=============================================*/
 $('.tournament-active,.featured-active').imagesLoaded( function() {
 	var $grid = $('.tournament-active,.featured-active').isotope({
 	  itemSelector: '.grid-item',
@@ -569,24 +471,18 @@ $('.tournament-active,.featured-active').imagesLoaded( function() {
 		columnWidth: 1,
 	  }
 	});
-	// filter items on button click
 	$('.tournament-menu').on( 'click', 'button', function() {
 		var filterValue = $(this).attr('data-filter');
 		$grid.isotope({ filter: filterValue });
 	});
 });
 
-//for menu active class
 $('.tournament-menu button').on('click', function(event) {
 	$(this).siblings('.active').removeClass('active');
 	$(this).addClass('active');
 	event.preventDefault();
 });
 
-
-/*=============================================
-    =    		 Aos Active  	         =
-=============================================*/
 function aosAnimation() {
 	AOS.init({
 		duration: 1000,
@@ -594,10 +490,6 @@ function aosAnimation() {
 	});
 }
 
-
-/*=============================================
-    =    		Odometer Active  	       =
-=============================================*/
 $('.odometer').appear(function (e) {
 	var odo = $(".odometer");
 	odo.each(function () {
@@ -606,10 +498,6 @@ $('.odometer').appear(function (e) {
 	});
 });
 
-
-/*=============================================
-    =    		 Countdown  	         =
-=============================================*/
 $('[data-countdown]').each(function () {
 	var $this = $(this), finalDate = $(this).data('countdown');
 	$this.countdown(finalDate, function (event) {
@@ -617,10 +505,6 @@ $('[data-countdown]').each(function () {
 	});
 });
 
-
-/*=============================================
-    =    		 Scroll Up  	         =
-=============================================*/
 $.scrollUp({
 	scrollName: 'scrollUp',
 	topDistance: '300',
@@ -632,10 +516,6 @@ $.scrollUp({
 	activeOverlay: false,
 });
 
-
-/*=============================================
-    =    		 Wow Active  	         =
-=============================================*/
 function wowAnimation() {
 	var wow = new WOW({
 		boxClass: 'wow',

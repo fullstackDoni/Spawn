@@ -3,17 +3,24 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout.html">
 <div layout:fragment="content">
-    <table class="table">
+    <table class="table table-striped">
         <thead>
         <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">Айдиы</th>
+            <th scope="col">Аты-Жөні</th>
+            <th scope="col">Поштасы</th>
         </tr>
         </thead>
         <tbody>
+        <div th:each="user: ${users}">
+            <tr>
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.fullName}"></td>
+                <td th:text="${user.email}"></td>
+            </tr>
+        </div>
         </tbody>
     </table>
+
 </div>
 </html>

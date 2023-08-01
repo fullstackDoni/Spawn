@@ -6,13 +6,13 @@
     <div class="row">
         <div class="col-12">
             <div class="alert alert-danger alert-dismissible fade show" role="alert" th:if="${param.autherror!=null}">
-                Неверный адрес электронной почты или пароль!
+                Қате электрондық пошта немесе құпия сөз!
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             <form th:action="@{'/to-enter'}" method="post">
                 <div class="row mt-2">
                     <div class="col-12">
-                        <label>Email:</label>
+                        <label>Электрондық Пошта:</label>
                     </div>
                 </div>
                 <div class="row mt-3">
@@ -22,7 +22,7 @@
                 </div>
                 <div class="row mt-2">
                     <div class="col-12">
-                        <label>Password:</label>
+                        <label>Құпиясөз:</label>
                     </div>
                 </div>
                 <div class="row mt-2">
@@ -33,7 +33,7 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col-12">
-                        <button class="btn text-white">Sign in</button>
+                        <button class="btn text-white">Кіру</button>
                     </div>
                 </div>
             </form>

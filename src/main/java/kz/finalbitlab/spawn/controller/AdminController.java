@@ -29,7 +29,7 @@ public class AdminController {
 
 
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+
     @GetMapping(value = "/admin-panel")
     public String adminPanel(Model model){
         return "admin";
@@ -61,6 +61,8 @@ public class AdminController {
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping(value = "/users")
     public String Users(Model model) {
+        List<User> users = userService.getUser();
+        model.addAttribute("users",users);
         return "users";
     }
 }

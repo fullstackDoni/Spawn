@@ -4,7 +4,6 @@ import kz.finalbitlab.spawn.dto.GameDTO;
 import kz.finalbitlab.spawn.model.Game;
 
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 
 import java.util.List;
 
