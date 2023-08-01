@@ -55,7 +55,7 @@
                 <div class="row mt-3">
                     <div class="col-12">
                         <select class="form-select" name="category.id">
-                            <option th:each="cat :${category}" th:value="${cat.id}" th:selected="category.id == cat.id">
+                            <option th:each="cat :${category}" th:value="${cat.id}" th:selected="game.category.id == cat.id">
                                 <span th:text="${cat.name}"></span>
                             </option>
                         </select>
